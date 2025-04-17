@@ -16,7 +16,11 @@ int main(){
     cin >> a >> b >> c;
 
     // used to shift a by the amount of digits in b
-    int multiplier = pow(10, GetDigitCount(b));
+    int multiplier = 1;
+    int loops = GetDigitCount(b);
+    for(int i=0; i<loops; i++){
+        multiplier *= 10;
+    }
 
     res1 = (multiplier * a) + b - c;
     res2 = a + b - c;
