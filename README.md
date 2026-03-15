@@ -12,4 +12,4 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 - 각 테스트케이스의 구분은 '###' 로 구분.
 - python colorama 모듈 필요 (필수는 아님, 원치 않으면 judge.py의 로그 색깔 부분 수정 후 사용가능) 
 
-![실행 예시 (windows powershell)](https://github.com/evanify0531/baekjoon/blob/5fc6b59e68ef9af8624cc3f1d8f2164aedc4cd89/%EC%BA%A1%EC%B2%98.PNG)
+![실행 예시 windows powershell](https://github.com/evanify0531/baekjoon/blob/5fc6b59e68ef9af8624cc3f1d8f2164aedc4cd89/%EC%BA%A1%EC%B2%98.PNG)
