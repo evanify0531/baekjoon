@@ -1,42 +1,38 @@
 #include <iostream>
-#include <queue>
 #include <vector>
+#include <queue>
 #include <algorithm>
+
 using namespace std;
 
-int main(void)
-{
-    int sum=0, n, maxDay=-1;
+int main() {
+    int n;
     cin >> n;
-    vector<pair<int, int>> p(n);
-    for(int i=0; i<n; i++)
-    {
-        cin >> p[i].second >> p[i].first;
-        maxDay = max(maxDay, p[i].second);
+    vector<pair<int, int>> dayAndPayments(n);
+
+    for(int i=0; i<n; i++){
+        cin >> dayAndPayments[i].second >> dayAndPayments[i].first;
     }
 
-    sort(p.begin(), p.end());
+    sort(dayAndPayments.begin(), dayAndPayments.end());
 
-    //make it so top will produce the min value (minheap)
-    priority_queue<int, vector<int>, greater<int>> pq;
-    for(int i=0; i<n; i++)
-    {
-        pq.push(p[i].second);
-        //the size of the pq represents how many days we've spent
-        //if the size of the pq is bigger than the current day, we have to choose the smallest
-        //pay out of all the choices we've taken (greedy)
-        // so we pop
-        if(pq.size() > p[i].first)
-        {
+    priority_queue <int, vector<int>, greater<int>> pq;
+
+    for(int i=0; i<n; i++){
+        pq.push(dayAndPayments[i].second);
+
+        // 방금 푸시한 강연의 기한으로 인해 pq의 모든 강연을 참여할 수 없을 때 가장 가치(p)가 낮은 강의 제거
+        if(pq.size() > dayAndPayments[i].first){
             pq.pop();
         }
     }
-    while(pq.size())
-    {
-        sum += pq.top();
+
+    int total = 0;
+    while(pq.size()){
+        total += pq.top();
         pq.pop();
     }
-    
-    cout << sum << '\n';
+
+    cout << total << endl;
     return 0;
 }
