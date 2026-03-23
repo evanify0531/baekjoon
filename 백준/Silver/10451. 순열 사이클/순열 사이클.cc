@@ -9,10 +9,12 @@ int graph[1004];
 bool visited[1004];
 
 void dfs(int node){
-    if(visited[node] == 1) return;
-
     visited[node] = 1;
-    dfs(graph[node]);
+
+    auto nextNode = graph[node];
+    if(visited[nextNode]) return;
+
+    dfs(nextNode);
 }
 
 int main() {
@@ -36,7 +38,7 @@ int main() {
         }
 
         for(int i=1; i<=n; i++){
-            if(visited[i] == 1) continue;
+            if(visited[i]) continue;
             cycles++;
             dfs(i);
         }
